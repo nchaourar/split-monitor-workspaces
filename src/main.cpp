@@ -319,7 +319,7 @@ static SDispatchResult splitMoveToWorkspace(const std::string& workspace)
 {
     if (!g_linkMonitors) {
         // not linked => just move to workspace on current monitor
-        auto const result = HyprlandAPI::invokeHyprctlCommand("dispatch", "movetoworkspace " + workspace);
+        auto const result = HyprlandAPI::invokeHyprctlCommand("dispatch", "movetoworkspace " + getWorkspaceFromMonitor(getCurrentMonitor(), workspace));
         return {.success = result == "ok", .error = result};
     }
     // workspaces are linked => silently move to workspace, then change workspace on all monitors
